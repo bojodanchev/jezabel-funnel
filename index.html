@@ -30,10 +30,11 @@
       object-fit: cover;
       width: auto;
       margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .splide {
-      width: 80%;
-      max-width: 400px;
+      width: 100%;
+      max-width: 460px;
       margin-bottom: 30px;
     }
     .card {
@@ -108,18 +109,15 @@
       pagination: false,
       arrows: false,
       gap: '1rem',
+      trimSpace: false,
       breakpoints: {
-        768: {
-          perPage: 1
-        }
+        768: { perPage: 1 }
       }
     }).mount();
 
-    // Countdown Timer
     const countdown = document.getElementById("countdown");
     let minutes = 15;
     let seconds = 0;
-
     setInterval(() => {
       if (seconds === 0) {
         if (minutes === 0) {
@@ -137,7 +135,6 @@
         (seconds < 10 ? "0" + seconds : seconds);
     }, 1000);
 
-    // Geo IP location injection
     fetch("https://ipapi.co/json")
       .then(res => res.json())
       .then(data => {
