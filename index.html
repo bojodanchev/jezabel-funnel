@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jezabel's Mystic Offer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -25,25 +24,17 @@
       flex-direction: column;
       padding: 20px;
     }
-    .carousel {
-      width: 100%;
+    .carousel-container {
       max-width: 400px;
       margin-bottom: 30px;
     }
-    .carousel img {
-      width: 180px;
-      height: 180px;
+    .glider-track img {
+      width: 160px;
+      height: 160px;
       border-radius: 16px;
       object-fit: cover;
-      margin: 0 auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      transform: scale(0.8);
-      opacity: 0.6;
-      transition: all 0.5s ease;
-    }
-    .carousel .slick-center img {
-      transform: scale(1.05);
-      opacity: 1;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      margin: 10px;
     }
     .card {
       background: white;
@@ -79,10 +70,12 @@
 </head>
 <body>
   <div class="overlay">
-    <div class="carousel">
-      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" /></div>
-      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" /></div>
-      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" /></div>
+    <div class="carousel-container">
+      <div class="glider">
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" />
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" />
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" />
+      </div>
     </div>
 
     <div class="card">
@@ -101,28 +94,17 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
   <script>
-    $(document).ready(function(){
-      $('.carousel').slick({
-        centerMode: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        infinite: true,
-        arrows: false,
-        dots: false,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1
-            }
-          }
-        ]
-      });
+    new Glider(document.querySelector('.glider'), {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      scrollLock: true,
+      rewind: true,
+      autoplay: 2000,
+      duration: 0.5,
+      dots: false
     });
 
     // Countdown Timer (resets every visit)
