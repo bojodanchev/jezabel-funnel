@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jezabel's Mystic Offer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -24,24 +26,27 @@
       padding: 20px;
     }
     .carousel {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 25px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+    .carousel .slick-slide {
+      transform: scale(0.7);
+      transition: all 0.3s ease;
+      opacity: 0.3;
+    }
+    .carousel .slick-center {
+      transform: scale(1);
+      opacity: 1;
+      z-index: 2;
     }
     .carousel img {
-      width: 100px;
-      height: 100px;
-      border-radius: 12px;
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
       object-fit: cover;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-    .carousel img:hover {
-      transform: scale(1.05);
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      margin: 0 auto;
     }
     .card {
       background: white;
@@ -78,9 +83,9 @@
 <body>
   <div class="overlay">
     <div class="carousel">
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" />
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" />
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" />
+      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" /></div>
+      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" /></div>
+      <div><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" /></div>
     </div>
 
     <div class="card">
@@ -99,7 +104,24 @@
     </div>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script>
+    // Activate slick carousel
+    $(document).ready(function(){
+      $('.carousel').slick({
+        slidesToShow: 3,
+        centerMode: true,
+        centerPadding: '0px',
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: false,
+        infinite: true,
+        swipe: true
+      });
+    });
+
     // Countdown Timer (resets every visit)
     const countdown = document.getElementById("countdown");
     let minutes = 15;
