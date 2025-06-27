@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jezabel's Mystic Offer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: url('https://your-cloudinary-link/jezabel-bg.webp') center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.65);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .carousel {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .carousel img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .card {
+      background: white;
+      color: black;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+    .card h2 { font-size: 18px; margin-bottom: 10px; }
+    .timer { color: red; font-weight: bold; }
+    .cta-btn {
+      background: #00AEEF;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 15px;
+      display: inline-block;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .subtext {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="carousel">
+      <img src="https://your-cloudinary-link/jez1.webp" />
+      <img src="https://your-cloudinary-link/jez2.webp" />
+      <img src="https://your-cloudinary-link/jez3.webp" />
+    </div>
+
+    <div class="card">
+      <h2>
+        <span style="color:red">80% OFF</span> Jezabel <br />
+        Promo Ends in <span class="timer" id="countdown">00:00:00</span>
+      </h2>
+      <p>23 years old ♈ Aries</p>
+      <p style="color:green">● Online Now</p>
+      <p>
+        Mystic girl from 📍<span id="geo-location">your city</span>, <br />
+        wants to give you a private reading 🔮
+      </p>
+      <a href="https://onlyfans.com/jezabel" class="cta-btn">Send me a message...</a>
+      <p class="subtext">Get access to my full vault for only $3.75 today :)</p>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer (resets every visit)
+    const countdown = document.getElementById("countdown");
+    let minutes = 15;
+    let seconds = 0;
+
+    const timer = setInterval(() => {
+      if (seconds === 0) {
+        if (minutes === 0) {
+          minutes = 15;
+          seconds = 0;
+        } else {
+          minutes--;
+          seconds = 59;
+        }
+      } else {
+        seconds--;
+      }
+      countdown.textContent =
+        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
+    }, 1000);
+
+    // Geo IP location injection
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("geo-location").textContent = data.city;
+      });
+  </script>
+
+  <!-- Meta & TikTok Pixel (placeholder) -->
+  <script>
+    // Add actual pixel code here
+  </script>
+</body>
+</html>
