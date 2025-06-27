@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jezabel's Mystic Offer</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -24,17 +24,17 @@
       flex-direction: column;
       padding: 20px;
     }
-    .carousel-container {
+    .splide__slide img {
+      border-radius: 16px;
+      height: 320px;
+      object-fit: cover;
+      width: auto;
+      margin: auto;
+    }
+    .splide {
+      width: 80%;
       max-width: 400px;
       margin-bottom: 30px;
-    }
-    .glider-track img {
-      width: 160px;
-      height: 160px;
-      border-radius: 16px;
-      object-fit: cover;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      margin: 10px;
     }
     .card {
       background: white;
@@ -70,11 +70,13 @@
 </head>
 <body>
   <div class="overlay">
-    <div class="carousel-container">
-      <div class="glider">
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" />
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" />
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" />
+    <div id="carousel" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" /></li>
+          <li class="splide__slide"><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" /></li>
+          <li class="splide__slide"><img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" /></li>
+        </ul>
       </div>
     </div>
 
@@ -94,25 +96,25 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
   <script>
-    new Glider(document.querySelector('.glider'), {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      draggable: true,
-      scrollLock: true,
-      rewind: true,
-      autoplay: 2000,
-      duration: 0.5,
-      dots: false
-    });
+    new Splide('#carousel', {
+      type: 'loop',
+      perPage: 1,
+      focus: 'center',
+      autoplay: true,
+      interval: 2500,
+      pauseOnHover: false,
+      pagination: false,
+      arrows: false,
+    }).mount();
 
-    // Countdown Timer (resets every visit)
+    // Countdown Timer
     const countdown = document.getElementById("countdown");
     let minutes = 15;
     let seconds = 0;
 
-    const timer = setInterval(() => {
+    setInterval(() => {
       if (seconds === 0) {
         if (minutes === 0) {
           minutes = 15;
