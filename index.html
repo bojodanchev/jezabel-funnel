@@ -28,13 +28,28 @@
       border-radius: 16px;
       height: 320px;
       object-fit: cover;
-      width: auto;
-      margin: auto;
+      width: 220px;
     }
     .splide {
-      width: 80%;
-      max-width: 400px;
+      max-width: 700px;
       margin-bottom: 30px;
+    }
+    .splide__track {
+      overflow: visible;
+    }
+    .splide__list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .splide__slide {
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      opacity: 0.6;
+    }
+    .splide__slide.is-active {
+      transform: scale(1.1);
+      opacity: 1;
     }
     .card {
       background: white;
@@ -100,13 +115,19 @@
   <script>
     new Splide('#carousel', {
       type: 'loop',
-      perPage: 1,
       focus: 'center',
+      perPage: 3,
       autoplay: true,
       interval: 2500,
       pauseOnHover: false,
       pagination: false,
       arrows: false,
+      gap: '20px',
+      breakpoints: {
+        768: {
+          perPage: 1,
+        },
+      }
     }).mount();
 
     // Countdown Timer
