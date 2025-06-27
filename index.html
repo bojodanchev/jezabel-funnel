@@ -27,26 +27,23 @@
     }
     .carousel {
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
       margin-bottom: 30px;
-    }
-    .carousel .slick-slide {
-      transform: scale(0.7);
-      transition: all 0.3s ease;
-      opacity: 0.3;
-    }
-    .carousel .slick-center {
-      transform: scale(1);
-      opacity: 1;
-      z-index: 2;
     }
     .carousel img {
       width: 180px;
       height: 180px;
       border-radius: 16px;
       object-fit: cover;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
       margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transform: scale(0.8);
+      opacity: 0.6;
+      transition: all 0.5s ease;
+    }
+    .carousel .slick-center img {
+      transform: scale(1.05);
+      opacity: 1;
     }
     .card {
       background: white;
@@ -107,18 +104,24 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script>
-    // Activate slick carousel
     $(document).ready(function(){
       $('.carousel').slick({
-        slidesToShow: 3,
         centerMode: true,
-        centerPadding: '0px',
-        arrows: false,
+        centerPadding: '60px',
+        slidesToShow: 3,
         autoplay: true,
         autoplaySpeed: 2000,
-        dots: false,
         infinite: true,
-        swipe: true
+        arrows: false,
+        dots: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
       });
     });
 
@@ -150,11 +153,6 @@
       .then(data => {
         document.getElementById("geo-location").textContent = data.city;
       });
-  </script>
-
-  <!-- Meta & TikTok Pixel (placeholder) -->
-  <script>
-    // Add actual pixel code here
   </script>
 </body>
 </html>
